@@ -1,0 +1,17 @@
+{
+    "id": "aodn_wave_nrt",
+    "artifact_uri": "s3prefix://imos-artifacts/promoted/talend/#{node['talend']['deployment_stage']}?pattern=^.*AODN_WAVE_NRT_harvester_Latest.zip$",
+    "params": {
+        "Metadata_UUID": "b299cdcd-3dee-48aa-abdd-e0fcdbb9cadc",
+        "Metadata_SpatialTable": "aodn_wave_nrt_timeseries_map",
+        "Metadata_SpatialColumn": "geom",
+        "Metadata_SpatialResolution": "2",
+        "Harvest_csv_file": "#{node['imos_po']['data_services']['wip_dir']}/AODN_WAVE_NRT/Buoys_metadata.csv",
+        "WfsServerURL": "http://spatial.bom.gov.au/cgi-bin/mapserver/aodn/aodn?",
+        "WfsTimeout": "60000"
+    },
+    "cron": {
+        "hour": "*",
+        "minute": "10"
+    }
+}

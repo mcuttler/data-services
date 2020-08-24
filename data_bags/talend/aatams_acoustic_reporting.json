@@ -1,0 +1,24 @@
+{
+    "id": "aatams_acoustic_reporting",
+    "artifact_uri": "s3prefix://imos-artifacts/promoted/talend/#{node['talend']['deployment_stage']}?pattern=^.*AATAMS_ACOUSTIC_REPORTING_Latest.zip$",
+    "params": {
+        "Origin_Database": "aatams3?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory",
+        "Origin_Password": "#{Talend::PostgresqlHelper::get_role_password('postgresql_roles', 'dbprod_aatams', 'aatams_acoustic')}",
+        "Origin_Port": "5432",
+        "Origin_Login": "aatams_acoustic",
+        "Origin_Schema": "aatams",
+        "Origin_Server": "aatams.emii.org.au",
+        "Metadata_UUID": "4a97bd11-e821-4682-8b20-cb69201f3223",
+        "Metadata_SpatialTable": "installation_summary",
+        "Metadata_SpatialColumn": "geom",
+        "Metadata_SpatialResolution": "2"
+    },
+    "cron": {
+        "weekday": "4"
+    },
+    "rc": {
+        "cron": {
+            "day": "1,7,13,20"
+        }
+    }
+}

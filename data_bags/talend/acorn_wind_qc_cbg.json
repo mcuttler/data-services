@@ -1,0 +1,15 @@
+{
+    "id": "acorn_wind_qc_cbg",
+    "artifact_uri": "s3prefix://imos-artifacts/promoted/talend/#{node['talend']['deployment_stage']}?pattern=^.*GENERIC_TIMESTEP_harvester_Latest.zip$",
+    "params": {
+        "Destination_Schema": "generic_timestep",
+        "Destination_Login": "generic_timestep",
+        "Destination_Password": "#{Talend::PostgresqlHelper::get_role_password('postgresql_roles', node['talend']['postgresql_role_databag'], 'generic_timestep')}",
+        "collection": "acorn_wind_qc_cbg"
+    },
+    "event": {
+        "regex": [
+            "^IMOS/ACORN/gridded_1h-avg-wind-map_QC/.*/.*_CBG_FV01_windp\\.nc$"
+        ]
+    }
+}
